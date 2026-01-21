@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detail Výstavy</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_d.css}">
+</head>
+<body>
+<h1 th:text="${vystava.nazev}"></h1>
+<p>Datum a čas: <span th:text="${vystava.datumcas}"></span></p>
+<p>Místo: <span th:text="${vystava.misto}"></span></p>
+<p>Stav: <span th:text="${vystava.stav}"></span></p>
+<p>Poznámky: <span th:text="${vystava.poznamky}"></span></p>
+<p>Počet zvířat: <span th:text="${vystava.pocetZvirat}"></span></p>
+<p>Počet vystavovatelů: <span th:text="${vystava.pocetChovatelu}"></span></p>
+<p>Počet posuzovatelů: <span th:text="${vystava.pocetPosuzovatelu}"></span></p>
+<a th:href="@{'/vystava/edit/' + ${vystava.id}}">Editovat</a>
+<br>
+<a href="/vystava">zpět na přehled vystav</a>
+</body>
+</html>

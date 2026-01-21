@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Posuzovatel Detail</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_d.css}">
+</head>
+<body>
+<h1>Detail Posuzovatele:</h1>
+<b>Jméno:</b> <span th:text="${posuzovatel.jmeno}"></span><br>
+<b>Specializace:</b> <span th:text="${posuzovatel.specializace}"></span><br>
+<b>Email:</b> <span th:text="${posuzovatel.email}"></span><br>
+<b>Telefon:</b> <span th:text="${posuzovatel.telefon}"></span><br>
+<a th:href="@{${'/posuzovatel/edit/' + posuzovatel.id}}">Editovat Posuzovatele</a>
+<br>
+<a th:href="@{${'/posuzovatel/delete/' + posuzovatel.id}}">Smazat Posuzovatele</a>
+<br>
+<a th:href="@{/posuzovatel}">Zpět na seznam posuzovatelů</a>
+</body>
+</html>

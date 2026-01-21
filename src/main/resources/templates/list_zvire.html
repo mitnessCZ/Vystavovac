@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_z.css}">
+    <title>Přihlášená Zvířata</title>
+</head>
+<body>
+<h1>Seznam Zvířat</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Typ Zvířete</th>
+        <th>Plemeno</th>
+        <th>Registrační Kód</th>
+        <th>Pohlaví</th>
+        <th>Chovatel</th>
+        <th>Akce</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="zvire : ${zvirata}">
+        <td th:text="${zvire.id}"></td>
+        <td th:text="${zvire.typZvirete}"></td>
+        <td th:text="${zvire.plemeno}"></td>
+        <td th:text="${zvire.regKod}"></td>
+        <td th:text="${zvire.pohlavi ? 'Samec' : 'Samice'}"></td>
+        <td th:text="${zvire.chovatel.jmenoChovatele}"></td>
+        <td>
+            <a th:href="@{/zvire/detail/{id}(id=${zvire.id})}">Detail</a>
+            <a th:href="@{/zvire/edit/{id}(id=${zvire.id})}">Edit</a>
+            <a th:href="@{/zvire/delete/{id}(id=${zvire.id})}" onclick="return confirm('Opravdu chcete smazat toto zvire?')">Smazat</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/zvire/create">Přidat nové zvíře</a>
+<br>
+<a href="/">Domů</a>
+<br>
+<a href="/">Exportovat do Excelu</a>
+<footer>Aktuálně přihlášen jako: <span th:text="${#authentication.name}"></span></footer>
+</body>
+</html>

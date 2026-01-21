@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_z.css}">
+    <title>vystavujici</title>
+</head>
+<body>
+<h1>vyvstavujici</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Jméno</th>
+        <th>Adresa</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="chovatel : ${chovatele}">
+        <td th:text="${chovatel.id}"></td>
+        <td th:text="${chovatel.jmenoChovatele}"></td>
+        <td th:text="${chovatel.adresa}"></td>
+        <td th:text="${chovatel.email}"></td>
+        <td th:text="${chovatel.telefon}"></td>
+        <td>
+
+            <a th:href="@{/chovatel/detail/{id}(id=${chovatel.id})}">Detail</a>
+
+            <a th:href="@{/chovatel/edit/{id}(id=${chovatel.id})}">Edit</a>
+
+            <a th:href="@{/chovatel/delete/{id}(id=${chovatel.id})}" onclick="return confirm('Opravdu chcete smazat tohoto chovatele?')">Smazat</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/chovatel/create">Create New Chovatel</a>
+<br>
+<a href="/">domu</a>
+<br>
+<a href="/">Exportovat do Excelu</a>
+<footer>Aktuálně přihlášen jako: <span th:text="${#authentication.name}"></span></footer>
+</body>
+</html>

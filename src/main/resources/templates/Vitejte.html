@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_v.css}">
+    <title>vitejte</title>
+</head>
+<body>
+<h1>Vítejte na naší domovské stránce!</h1>
+<a th:href="@{/zvire}">prihlasena zvirata</a>
+<br>
+<a th:href="@{/chovatel}">Seznam vystavovatelů</a>
+<br>
+<a th:href="@{/posuzovatel}">Seznam posuzovatelů</a>
+<br>
+<a th:href="@{/vystava}">Pořádané výstavy</a>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout">
+</form>
+<footer>Aktuálně přihlášen jako: <span th:text="${#authentication.name}" ></span></footer>
+</body>
+</html>

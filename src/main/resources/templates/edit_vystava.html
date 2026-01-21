@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${edit} ? 'Editovat Výstavu' : 'Vytvořit Výstavu'"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_e.css}">
+</head>
+<body>
+<h1 th:text="${edit ? 'Editovat Výstavu' : 'Vytvořit Výstavu'}"></h1>
+<form th:action="@{${ edit ? '/vystava/edit' : '/vystava/create' }}" th:object="${vystava}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label for="nazev">Název:</label>
+        <input type="text" id="nazev" th:field="*{nazev}" />
+        <span th:if="${#fields.hasErrors('nazev')}" th:errors="*{nazev}"></span>
+    </div>
+    <div>
+        <label for="datumCas">Datum a čas:</label>
+        <input type="datetime-local" id="datumCas" th:field="*{datumcas}" />
+        <span th:if="${#fields.hasErrors('datumcas')}" th:errors="*{datumcas}"></span>
+    </div>
+    <div>
+        <label for="misto">Místo:</label>
+        <input type="text" id="misto" th:field="*{misto}" />
+        <span th:if="${#fields.hasErrors('misto')}" th:errors="*{misto}"></span>
+    </div>
+    <div>
+        <label for="stav">Stav:</label>
+        <input type="text" id="stav" th:field="*{stav}" />
+        <span th:if="${#fields.hasErrors('stav')}" th:errors="*{stav}"></span>
+    </div>
+    <div>
+        <label for="poznamky">Poznámky:</label>
+        <textarea id="poznamky" th:field="*{poznamky}"></textarea>
+    </div>
+    <div>
+        <button type="submit" th:text="${edit} ? 'Uložit' : 'Vytvořit'"></button>
+    </div>
+</form>
+<a href="/vystava">zpět na přehled vystav</a>
+</body>
+</html>

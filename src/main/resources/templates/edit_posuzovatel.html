@@ -1,0 +1,40 @@
+            <!DOCTYPE html>
+            <html lang="en"  xmlns:th="http://www.thymeleaf.org">
+            <head>
+                <meta charset="UTF-8">
+                <title th:text="${edit ? 'Editace Posuzovatele' : 'Nový Posuzovatel'}"></title>
+                <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_e.css}">
+            </head>
+            <body>
+            <h1 th:text="${edit ? 'Editace Posuzovatele' : 'Nový Posuzovatel'}"></h1>
+            <form method="post" th:action="@{${edit ? '/posuzovatel/edit' : '/posuzovatel/create'}}" th:object="${posuzovatel}">
+                <input type="hidden" th:field="*{id}">
+
+                <b>Jméno:</b>
+                <input type="text" th:field="*{jmeno}">
+                <span th:if="${#fields.hasErrors('jmeno')}" th:errors="*{jmeno}"></span>
+                <br>
+
+                <b>Specializace:</b>
+                <label><input type="radio" th:field="*{specializace}" value="králík"> Králík</label>
+                <label><input type="radio" th:field="*{specializace}" value="holub"> Holub</label>
+                <label><input type="radio" th:field="*{specializace}" value="drůbež"> Drůbež</label>
+                <span th:if="${#fields.hasErrors('specializace')}" th:errors="*{specializace}"></span>
+                <br>
+
+                <b>Email:</b>
+                <input type="text" th:field="*{email}">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                <br>
+
+                <b>Telefon:</b>
+                <input type="text" th:field="*{telefon}">
+                <span th:if="${#fields.hasErrors('telefon')}" th:errors="*{telefon}"></span>
+                <br>
+                <div>
+                    <button type="submit" th:text="${edit} ? 'Uložit' : 'Vytvořit'"></button>
+                </div>
+            </form>
+            <a href="/posuzovatel">Zpět na seznam</a>
+            </body>
+            </html>

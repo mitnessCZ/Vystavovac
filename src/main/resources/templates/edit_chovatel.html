@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>th:text="${edit ? 'Edit Chovatel' : 'Create Chovatel'}"</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_e.css}">
+</head>
+<body>
+<h1 th:text="${edit ? 'Editace Chovatele' : 'nový Chovatel'}"></h1>
+<form method="post" th:action="@{${edit ? '/chovatel/edit' : '/chovatel/create'}}" th:object="${chovatel}">
+    <input type="hidden" th:field="*{id}">
+    <b>Jméno:</b>
+    <input type="text" th:field="*{jmenoChovatele}">
+    <span th:if="${#fields.hasErrors('jmenoChovatele')}" th:errors="*{jmenoChovatele}">toto pole nesmí být prázdné</span>
+    <br>
+    <b>Adresa:</b>
+    <input type="text" th:field="*{adresa}">
+    <span th:if="${#fields.hasErrors('adresa')}" th:errors="*{adresa}"></span>
+    <br>
+    <b>Email:</b> <input type="text" th:field="*{email}">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <br>
+    <b>Telefon:</b>
+    <input type="text" th:field="*{telefon}">
+    <span th:if="${#fields.hasErrors('telefon')}" th:errors="*{telefon}"></span>
+    <br>
+    <div>
+        <button type="submit" th:text="${edit} ? 'Uložit' : 'Vytvořit'"></button>
+    </div>
+</form>
+<a href="/chovatel">zpět na přehled chovatelů</a>
+</body>
+</html>

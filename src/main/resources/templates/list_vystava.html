@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Seznam Výstav</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_z.css}">
+</head>
+<body>
+<h1>Seznam Výstav</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Název</th>
+        <th>Datum</th>
+        <th>Místo</th>
+        <th>Počet Zvířat</th>
+        <th>Počet Vystavovatelů</th>
+        <th>Akce</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vystava : ${vystavy}">
+        <td th:text="${vystava.id}"></td>
+        <td>
+            <a th:href="@{'/vystava/detail/' + ${vystava.id}}" th:text="${vystava.nazev}"></a>
+        </td>
+        <td><span th:text="${vystava.datumcas}"></span></td>
+        <td><span th:text="${vystava.misto}"></span></td>
+        <td><span th:text="${vystava.getPocetZvirat()}"></span></td>
+        <td><span th:text="${vystava.getPocetChovatelu()}"></span></td>
+        <td>
+            <a th:href="@{/vystava/detail/{id}(id=${vystava.id})}">Detail</a>
+            <a th:href="@{'/vystava/edit/' + ${vystava.id}}">Edit</a>
+            <a th:href="@{'/vystava/delete/' + ${vystava.id}}" onclick="return confirm('Opravdu chcete smazat tuto výstavu?')">Smazat</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{'/vystava/create'}">Přidat novou výstavu</a>
+<br>
+<a href="/">Domů</a>
+<footer>Aktuálně přihlášen jako: <span th:text="${#authentication.name}"></span></footer>
+</body>
+</html>

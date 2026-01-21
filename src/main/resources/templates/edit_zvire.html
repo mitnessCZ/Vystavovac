@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${edit ? 'Editace Zvířete' : 'Nové Zvíře'}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_e.css}">
+
+</head>
+<body>
+<h1 th:text="${edit ? 'Editace Zvířete' : 'Nové Zvíře'}"></h1>
+<form method="post" th:action="@{${edit ? '/zvire/edit' : '/zvire/create'}}" th:object="${zvire}">
+    <input type="hidden" th:field="*{id}">
+    <b>Typ Zvířete:</b>
+    <select th:field="*{typZvirete}">
+        <option value="králík">Králík</option>
+        <option value="holub">Holub</option>
+        <option value="drůbež">Drůbež</option>
+    </select>
+    <br>
+    <b>Plemeno:</b>
+    <input type="text" th:field="*{plemeno}">
+    <span th:if="${#fields.hasErrors('plemeno')}" th:errors="*{plemeno}"></span>
+    <br>
+    <b>Registrační Kód:</b>
+    <input type="text" th:field="*{regKod}">
+    <span th:if="${#fields.hasErrors('regKod')}" th:errors="*{regKod}"></span>
+    <br>
+    <b>Pohlaví:</b>
+    <input type="radio" th:field="*{pohlavi}" value="true"> 10
+    <input type="radio" th:field="*{pohlavi}" value="false"> 01
+    <span th:if="${#fields.hasErrors('pohlavi')}" th:errors="*{pohlavi}"></span>
+    <br>
+    <b>Chovatel:</b>
+    <select th:field="*{chovatel.id}">
+        <option th:each="chovatel : ${chovatele}" th:value="${chovatel.id}" th:text="${chovatel.jmenoChovatele}"></option>
+    </select>
+    <span th:if="${#fields.hasErrors('chovatel')}" th:errors="*{chovatel}"></span>
+    <br>
+    <div>
+        <button type="submit" th:text="${edit} ? 'Uložit' : 'Vytvořit'"></button>
+    </div>
+</form>
+<a href="/zvire">Zpět na seznam</a>
+</body>
+</html>

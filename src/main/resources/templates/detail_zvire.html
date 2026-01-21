@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>detail zvirete</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_d.css}">
+</head>
+<body>
+<h1>Detail Zvířete</h1>
+<p><b>ID:</b> <span th:text="${zvire.id}"></span></p>
+<p><b>Plemeno:</b> <span th:text="${zvire.plemeno}"></span></p>
+<p><b>Registrační Kód:</b> <span th:text="${zvire.regKod}"></span></p>
+<p><b>Pohlaví:</b> <span th:text="${zvire.pohlavi ? 'Samec' : 'Samice'}"></span></p>
+<p><b>Chovatel</b> <span th:text="${zvire.chovatel.jmenoChovatele}"></span></p>
+<a href="/zvire">Zpět na seznam</a>
+</body>
+</html>

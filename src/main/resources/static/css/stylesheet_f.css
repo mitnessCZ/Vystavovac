@@ -1,0 +1,39 @@
+
+ body {
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+     background-color: #f8d7da; /* Světle červená barva pro chybové stránky */
+     color: #721c24; /* Tmavší červená barva pro text */
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+ }
+
+h1 {
+    font-size: 6em;
+    margin: 0;
+}
+
+p {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+
+a {
+    margin-top: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+

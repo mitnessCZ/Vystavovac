@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet_z.css}">
+    <title>posuzovatele</title>
+</head>
+<body>
+<h1>Seznam Posuzovatelů</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Jméno</th>
+        <th>Specializace</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Akce</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="posuzovatel : ${posuzovatele}">
+        <td th:text="${posuzovatel.id}"></td>
+        <td th:text="${posuzovatel.jmeno}"></td>
+        <td th:text="${posuzovatel.specializace}"></td>
+        <td th:text="${posuzovatel.email}"></td>
+        <td th:text="${posuzovatel.telefon}"></td>
+        <td>
+            <a th:href="@{/posuzovatel/detail/{id}(id=${posuzovatel.id})}">Detail</a> |
+            <a th:href="@{/posuzovatel/edit/{id}(id=${posuzovatel.id})}">Edit</a> |
+            <a th:href="@{/posuzovatel/delete/{id}(id=${posuzovatel.id})}"onclick="return confirm('Opravdu chcete smazat tohoto posuzovatel?')">Smazat</a>>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/posuzovatel/create">Vytvořit nového posuzovatele</a>
+<br>
+<a href="/">domu</a>
+<footer>Aktuálně přihlášen jako: <span th:text="${#authentication.name}"></span></footer>
+</body>
+</html>
